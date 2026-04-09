@@ -2,7 +2,7 @@
 
 A fully functional AI-powered customer support chatbot built with RAG (Retrieval Augmented Generation). Trained on business documents and answers customer questions instantly, 24/7.
 
-**Live Demo:** [Zara's Bakery Chatbot](https://jolly-platypus-faa441.netlify.app)
+**Live Demo:** [Zara's Bakery Chatbot](https://www.upwork.com/freelancers/~01aebffd4d10de4043?p=2041842717047816192)
 
 ---
 
@@ -69,43 +69,8 @@ Return Accurate Answer
 
 ---
 
-## 🚀 How to Deploy for a New Client
 
-1. **Import** `Supabase_RAG_AI_Agent.json` into your n8n instance
-2. **Connect credentials:**
-   - OpenAI API key
-   - Supabase account (URL + service key)
-   - Supabase Postgres (connection string)
-3. **Run this SQL** in Supabase to create the search function:
-```sql
-create or replace function match_documents (
-  query_embedding vector(1536),
-  match_count int default null,
-  filter jsonb default '{}'
-) returns table (
-  id bigint,
-  content text,
-  metadata jsonb,
-  similarity float
-)
-language plpgsql
-as $$
-begin
-  return query
-  select
-    documents.id,
-    documents.content,
-    documents.metadata,
-    1 - (documents.embedding <=> query_embedding) as similarity
-  from documents
-  where documents.metadata @> filter
-  order by documents.embedding <=> query_embedding
-  limit match_count;
-end;
-$$;
-```
-4. **Upload client documents** via the ingestion webhook
-
+3. **Upload client documents** via the ingestion webhook
 
 ---
 
