@@ -70,15 +70,15 @@ Return Accurate Answer
 ---
 
 
-3. **Upload client documents** via the ingestion webhook
+**Upload client documents** via the ingestion webhook
 
 ---
 
 ## 📁 Project Structure
 
 ```
-├── Supabase_RAG_AI_Agent.json    # n8n workflow
-└── README.md                     # You are here
+├── Supabase RAG AI Agent.json    # n8n workflow
+└── README.md                     
 ```
 
 ---
